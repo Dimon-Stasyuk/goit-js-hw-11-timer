@@ -7,12 +7,12 @@ const refs = {
 
 
 class CountdownTimer {
-    constructor() {
-       this.targetDate = 'Jul 20, 2019';
+    constructor({ targetDate, selector }) {
+        this.selector = selector;
+       this.targetDate = targetDate;
    }
-    start() {        
-        const targetDate = new Date(this.targetDate);
-        const TimerTime = Date.now() - targetDate;
+    start() {
+        const TimerTime = Date.now() - this.targetDate;
         const currentTime = new Date();
         setInterval(() => {
             
@@ -24,16 +24,16 @@ class CountdownTimer {
             refs.mins.textContent = mins;
             refs.secs.textContent = secs;            
     }, 1000);
-        }
-    
-}
+    };
+};
 
 
 
 const timer = new CountdownTimer({
   selector: '#timer-1',
-  targetDate: new Date('Jul 21, 2019'),
+  targetDate: new Date('Jul 26, 2019'),
 });
+
 timer.start();
 
 
